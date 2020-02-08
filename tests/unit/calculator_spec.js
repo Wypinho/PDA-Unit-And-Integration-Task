@@ -12,10 +12,17 @@ describe('calculator', function () {
   })
 
   it('can add two integers correctly', function(){
-    calculator.add(1)
+    calculator.numberClick(1)
     calculator.operatorClick('+')
     calculator.add(4)
     assert.equal(calculator.runningTotal, 5)
+  })
+
+  it('can subtract two integers correctly', function(){
+    calculator.numberClick(7)
+    calculator.operatorClick('-')
+    calculator.subtract(4)
+    assert.equal(calculator.runningTotal, 3)
   })
 
 });
