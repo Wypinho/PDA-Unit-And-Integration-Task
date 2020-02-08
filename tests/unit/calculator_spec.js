@@ -39,4 +39,29 @@ describe('calculator', function () {
     assert.equal(calculator.runningTotal, 3)
   })
 
+  it('can concatenate number clicks', function(){
+    calculator.numberClick(2)
+    calculator.numberClick(2)
+    calculator.numberClick(5)
+    assert.equal(calculator.runningTotal, 225)
+  })
+
+  it('can chain operations together', function(){
+    calculator.numberClick(2)
+    console.log(calculator.previousTotal);
+    console.log(calculator.runningTotal);
+    calculator.operatorClick('*')
+    calculator.multiply(2)
+    console.log(calculator.previousTotal);
+    console.log(calculator.runningTotal);
+    calculator.operatorClick('+')
+    console.log(calculator.previousTotal);
+    console.log(calculator.runningTotal);
+    calculator.add(5)
+    console.log(calculator.previousTotal);
+    console.log(calculator.runningTotal);
+    calculator.operatorClick('=')
+    assert.equal(calculator.runningTotal, 9)
+  })
+
 });
