@@ -25,4 +25,11 @@ describe('calculator', function () {
     assert.equal(calculator.runningTotal, 3)
   })
 
+  it('can multiply two integers correctly', function(){
+    calculator.numberClick(3)
+    calculator.operatorClick('*')
+    calculator.multiply(5)
+    assert.equal(calculator.runningTotal, 15)
+  })
+
 });
