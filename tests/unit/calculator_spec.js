@@ -14,28 +14,32 @@ describe('calculator', function () {
   it('can add two integers correctly', function(){
     calculator.numberClick(1)
     calculator.operatorClick('+')
-    calculator.add(4)
+    calculator.numberClick(4)
+    calculator.operatorClick('=')
     assert.equal(calculator.runningTotal, 5)
   })
 
   it('can subtract two integers correctly', function(){
     calculator.numberClick(7)
     calculator.operatorClick('-')
-    calculator.subtract(4)
+    calculator.numberClick(4)
+    calculator.operatorClick('=')
     assert.equal(calculator.runningTotal, 3)
   })
 
   it('can multiply two integers correctly', function(){
     calculator.numberClick(3)
     calculator.operatorClick('*')
-    calculator.multiply(5)
+    calculator.numberClick(5)
+    calculator.operatorClick('=')
     assert.equal(calculator.runningTotal, 15)
   })
 
   it('can divide two integers correctly', function(){
     calculator.numberClick(21)
     calculator.operatorClick('/')
-    calculator.divide(7)
+    calculator.numberClick(7)
+    calculator.operatorClick('=')
     assert.equal(calculator.runningTotal, 3)
   })
 
@@ -43,23 +47,24 @@ describe('calculator', function () {
     calculator.numberClick(2)
     calculator.numberClick(2)
     calculator.numberClick(5)
+    calculator.operatorClick('=')
     assert.equal(calculator.runningTotal, 225)
   })
 
   it('can chain operations together', function(){
     calculator.numberClick(2)
-    console.log(calculator.previousTotal);
-    console.log(calculator.runningTotal);
+    // console.log('Previous: ', calculator.previousTotal);
+    // console.log('Current: ', calculator.runningTotal);
     calculator.operatorClick('*')
-    calculator.multiply(2)
-    console.log(calculator.previousTotal);
-    console.log(calculator.runningTotal);
+    calculator.numberClick(2)
+    // console.log('Previous: ', calculator.previousTotal);
+    // console.log('Current: ', calculator.runningTotal);
     calculator.operatorClick('+')
-    console.log(calculator.previousTotal);
-    console.log(calculator.runningTotal);
-    calculator.add(5)
-    console.log(calculator.previousTotal);
-    console.log(calculator.runningTotal);
+    // console.log('Previous: ', calculator.previousTotal);
+    // console.log('Current: ', calculator.runningTotal);
+    calculator.numberClick(5)
+    // console.log('Previous: ', calculator.previousTotal);
+    // console.log('Current: ', calculator.runningTotal);
     calculator.operatorClick('=')
     assert.equal(calculator.runningTotal, 9)
   })
