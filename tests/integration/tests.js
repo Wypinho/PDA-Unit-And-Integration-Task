@@ -53,4 +53,36 @@ describe('calculator functionality', function() {
     expect(running_total.getAttribute('value')).to.eventually.equal('-5')
   })
 
+  it('displays decimal numbers as expected', function(){
+    running_total = element(by.css('#running_total'))
+    element(by.css('#number7')).click();
+    element(by.css('#operator_divide')).click();
+    element(by.css('#number2')).click();
+    element(by.css('#operator_equals')).click();
+    expect(running_total.getAttribute('value')).to.eventually.equal('3.5')
+  })
+
+  it('displays large numbers as expected', function(){
+    running_total = element(by.css('#running_total'))
+    element(by.css('#number5')).click();
+    element(by.css('#number1')).click();
+    element(by.css('#number0')).click();
+    element(by.css('#number5')).click();
+    element(by.css('#number1')).click();
+    element(by.css('#number0')).click();
+    element(by.css('#number5')).click();
+    element(by.css('#number1')).click();
+    element(by.css('#number0')).click();
+    expect(running_total.getAttribute('value')).to.eventually.equal('510510510')
+  })
+
+  it('displays an error for divide by zero', function(){
+    running_total = element(by.css('#running_total'))
+    element(by.css('#number6')).click();
+    element(by.css('#operator_divide')).click();
+    element(by.css('#number0')).click();
+    element(by.css('#operator_equals')).click();
+    expect(running_total.getAttribute('value')).to.eventually.equal('Error')
+  })
+
 });
